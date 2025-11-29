@@ -1,19 +1,2 @@
-plugins {
-    id 'java'
-}
-
-group = 'com.food.ordering.system'
-version = '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
-}
+// Order Service parent module
+// 이 모듈은 실제 코드를 포함하지 않고, 하위 모듈들을 그룹화하는 역할만 함

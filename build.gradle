@@ -34,15 +34,6 @@ subprojects {
         imports {
             mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
         }
-
-        dependencies {
-            // Order Service
-            dependency 'com.food.ordering.system:order-domain-core:1.0-SNAPSHOT'
-            dependency 'com.food.ordering.system:order-application-service:1.0-SNAPSHOT'
-            dependency 'com.food.ordering.system:order-application:1.0-SNAPSHOT'
-            dependency 'com.food.ordering.system:order-dataaccess:1.0-SNAPSHOT'
-            dependency 'com.food.ordering.system:order-messaging:1.0-SNAPSHOT'
-        }
     }
 
     dependencies {
