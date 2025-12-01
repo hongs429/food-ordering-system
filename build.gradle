@@ -2,6 +2,7 @@ buildscript {
     ext {
         springBootVersion = '2.6.3'
         mavenCompilerPluginVersion = '3.9.0'
+        lombokVersion = '1.18.30'  // Java 17 호환 버전
     }
 }
 
@@ -37,8 +38,8 @@ subprojects {
     }
 
     dependencies {
-        compileOnly 'org.projectlombok:lombok'
-        annotationProcessor 'org.projectlombok:lombok'
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
         implementation 'org.springframework.boot:spring-boot-starter-logging'
     }
