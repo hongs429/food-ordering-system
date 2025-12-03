@@ -42,6 +42,9 @@ subprojects {
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
         implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'org.mockito:mockito-core'
     }
 
     test {
