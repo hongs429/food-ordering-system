@@ -69,6 +69,6 @@ public class OrderCreateCommandHandler {
             throw new OrderDomainException("Could not save order with orderId " + order.getId());
         }
 
-
+        return savedOrder;
     }
 }
