@@ -123,20 +123,20 @@ public class Order extends AggregateRoot<OrderId> {
         }
     }
 
-    private Order(Builder builder) {
-        super.setId(builder.id);
-        customerId = builder.customerId;
-        restaurantId = builder.restaurantId;
-        deliveryAddress = builder.deliveryAddress;
-        price = builder.price;
-        items = builder.items;
-        trackingId = builder.trackingId;
-        orderStatus = builder.orderStatus;
-        failureMessages = builder.failureMessages;
+    private Order(OrderBuilder orderBuilder) {
+        super.setId(orderBuilder.id);
+        customerId = orderBuilder.customerId;
+        restaurantId = orderBuilder.restaurantId;
+        deliveryAddress = orderBuilder.deliveryAddress;
+        price = orderBuilder.price;
+        items = orderBuilder.items;
+        trackingId = orderBuilder.trackingId;
+        orderStatus = orderBuilder.orderStatus;
+        failureMessages = orderBuilder.failureMessages;
     }
 
 
-    public static final class Builder {
+    public static final class OrderBuilder {
         private OrderId id;
         private CustomerId customerId;
         private RestaurantId restaurantId;
@@ -147,54 +147,54 @@ public class Order extends AggregateRoot<OrderId> {
         private OrderStatus orderStatus;
         private List<String> failureMessages;
 
-        private Builder() {
+        private OrderBuilder() {
         }
 
-        public static Builder newBuilder() {
-            return new Builder();
+        public static OrderBuilder builder() {
+            return new OrderBuilder();
         }
 
-        public Builder id(OrderId val) {
+        public OrderBuilder id(OrderId val) {
             id = val;
             return this;
         }
 
-        public Builder customerId(CustomerId val) {
+        public OrderBuilder customerId(CustomerId val) {
             customerId = val;
             return this;
         }
 
-        public Builder restaurantId(RestaurantId val) {
+        public OrderBuilder restaurantId(RestaurantId val) {
             restaurantId = val;
             return this;
         }
 
-        public Builder deliveryAddress(StreetAddress val) {
+        public OrderBuilder deliveryAddress(StreetAddress val) {
             deliveryAddress = val;
             return this;
         }
 
-        public Builder price(Money val) {
+        public OrderBuilder price(Money val) {
             price = val;
             return this;
         }
 
-        public Builder items(List<OrderItem> val) {
+        public OrderBuilder items(List<OrderItem> val) {
             items = val;
             return this;
         }
 
-        public Builder trackingId(TrackingId val) {
+        public OrderBuilder trackingId(TrackingId val) {
             trackingId = val;
             return this;
         }
 
-        public Builder orderStatus(OrderStatus val) {
+        public OrderBuilder orderStatus(OrderStatus val) {
             orderStatus = val;
             return this;
         }
 
-        public Builder failureMessages(List<String> val) {
+        public OrderBuilder failureMessages(List<String> val) {
             failureMessages = val;
             return this;
         }
