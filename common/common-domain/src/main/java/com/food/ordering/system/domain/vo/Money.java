@@ -2,16 +2,18 @@ package com.food.ordering.system.domain.vo;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 
 @Getter
-@AllArgsConstructor
 @EqualsAndHashCode
 public class Money {
     private final BigDecimal amount;
+
+    public Money(BigDecimal amount) {
+        this.amount = setScale(amount);
+    }
 
     public static final Money ZERO = new Money(BigDecimal.ZERO);
 

@@ -26,11 +26,11 @@ class OrderApplicationServiceImpl implements OrderApplicationService {
 
     @Override
     public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {
-        return null;
+        return orderCreateCommandHandler.createOrder(createOrderCommand);
     }
 
     @Override
     public TrackOrderResponse trackOrder(TrackOrderQuery trackOrderQuery) {
-        return null;
+        return orderTrackCommandHandler.trackOrder(trackOrderQuery);
     }
 }

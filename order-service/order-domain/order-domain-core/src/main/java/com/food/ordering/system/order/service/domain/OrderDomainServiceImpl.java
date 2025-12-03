@@ -3,7 +3,6 @@ package com.food.ordering.system.order.service.domain;
 import com.food.ordering.system.domain.vo.ProductId;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.OrderItem;
-import com.food.ordering.system.order.service.domain.entity.Product;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
 import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
 import com.food.ordering.system.order.service.domain.event.OrderCreateEvent;
@@ -13,6 +12,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,14 +32,14 @@ public class OrderDomainServiceImpl implements OrderDomainService {
     }
 
     private void setOrderProductInformation(Order order, Restaurant restaurant) {
-        Map<ProductId, Product> orderItemToMap = order.getItems().stream().collect(Collectors.toMap(
-                orderItem -> orderItem.getProduct().getId(), OrderItem::getProduct
+        Map<ProductId, OrderItem> orderItemToMap = order.getItems().stream().collect(Collectors.toMap(
+                orderItem -> orderItem.getProduct().getId(), Function.identity()
         ));
 
         restaurant.getProducts().forEach(orderItem -> {
             if (orderItemToMap.containsKey(orderItem.getId())) {
-                Product product = orderItemToMap.get(orderItem.getId());
-                product.updateWithConfirmedNameAndPrice(orderItem.getName(), orderItem.getPrice());
+                OrderItem selectedOrderItem = orderItemToMap.get(orderItem.getId());
+                selectedOrderItem.getProduct().updateWithConfirmedNameAndPrice(orderItem.getName(), orderItem.getPrice());
             }
         });
     }
