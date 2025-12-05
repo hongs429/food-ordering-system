@@ -1,0 +1,20 @@
+subprojects {
+    repositories {
+        maven {
+            name = "confluent"
+            url = "https://packages.confluent.io/maven/"
+        }
+    }
+
+    dependencies {
+        implementation "org.springframework.kafka:spring-kafka:${springKafkaVerison}"
+        implementation("io.confluent:kafka-avro-serializer:${avroSerializerVersion}") {
+            exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+            exclude group: 'log4j', module: 'log4j'
+            exclude group: 'io.swagger', module: 'swagger-annotations'
+            exclude group: 'io.swagger', module: 'swagger-core'
+        }
+        implementation "org.apache.avro:avro:${avroVersion}"
+        implementation 'javax.annotation:javax.annotation-api:1.3.2'
+    }
+}

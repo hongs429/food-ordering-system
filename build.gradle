@@ -3,6 +3,9 @@ buildscript {
         springBootVersion = '2.6.3'
         mavenCompilerPluginVersion = '3.9.0'
         lombokVersion = '1.18.30'  // Java 17 호환 버전
+        avroVersion = '1.11.0'
+        springKafkaVerison = '2.8.2'
+        avroSerializerVersion = '7.0.1'
     }
 }
 
